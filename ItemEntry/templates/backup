@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
+
+	<title>GrocerWe</title>
+
+
+
+<script src="https://code.jquery.com/jquery-1.9.1.js"  integrity="sha256-e9gNBsAcA0DBuRWbm0oZfbiCyhjLrI6bmqAl5o+ZjUA=" crossorigin="anonymous"></script>
+
+
+
+
+</head>
+    
+<body>
+    
+<div class="bigContainer">
+<header> 
+    <center> 
+<img src="img/grocerWeLogo.png" class="logo" ></center>
+  <div id="stepsbar-wrap">
+  <div id="stepsbar" class="stepsbar">
+      <center> 
+    <ol>
+      <li class="active"><span>Bill Items</span></li>
+      <li ><span>Friends</span></li>
+      <li><span>Split Items</span></li>
+      <li><span>Results</span></li>
+    </ol>
+    </center>
+  </div>        
+</div>
+     </header> 
+
+<div class="formsHolder">
+    <h1>What items are you splitting?</h1>
+    
+    
+    <form id="form-step1" class="form-vertical">
+        <legend>Items</legend>
+             
+        <div id="extender2">
+            <p style="display: block;">
+            
+              <input type="text"  class="inp itemInput" id="1" value="">
+                      <input type="number" min="0.00" max="10000.00" step="0.01" class="priceInput"/>
+
+                
+
+            <a class="dynamic-link" href="#step2"><img src="img/remove.png" width="30px"></a></p>
+        </div>
+        
+
+        <p><a id="add_btn2" href="#"><img src="img/add.png" width="30px"></a></p>
+        <a href="#form-step2" id="btn2" class="btn"> Next </a>
+        </form>
+        
+    
+    
+    
+    
+    
+    
+  <div id="#form-step2"></div>
+    
+    <form method="post" action="" id="form-step2" class="form-vertical disable-scrollbars" >
+ <fieldset> 
+      <legend>Names</legend>
+      <div id="extender" >
+
+          <p style="display: block;"><input type="text"  class="inp" id="1" value=""><a class="dynamic-link" href="#step2"><img src="img/remove.png" width="30px"></a></p>
+
+
+      </div>
+
+      <p><a id="add_btn" href="#"><img src="/img/add.png" width="30px"></a></p>
+
+       <a href="#top" class="btn" id="btn1">prev </a>  <br>   
+       <a href="#form-step3" class="btn" class="btn2"> next </a>
+</fieldset>
+            
+
+</form>
+    
+    </div> <!--formsHolder end-->
+
+       
+  
+
+<a href="#form-step2" id="btn2" class="btn">  next </a>
+
+<!--<button id="btn1" class="btn"> Step back</button>
+<button id="btn2" class="btn"> Next Step</button> -->
+    </div>
+    
+    
+    
+    <!----------JS LINKS--------------------------------------->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.9.1.js"  integrity="sha256-e9gNBsAcA0DBuRWbm0oZfbiCyhjLrI6bmqAl5o+ZjUA=" crossorigin="anonymous"></script>
+
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/dotslide.js"></script>
+    
+    
+    
+</body>
+
+
+<script>
+    
+    //set a counter
+    var j = $('#form-step1 :input').length + 1;
+
+    //add input
+    $('a#add_btn').click(function () {
+        $('<p><input type="text" name="items[]" class="inp" id="' + j + '" value="" />' +
+            '<a class="dynamic-link" href="#step2"><img src="img/remove.png" width="30px"></a></p>').fadeIn("slow").appendTo('#extender');
+        j++;
+        return false;
+    });
+
+
+    //fadeout selected item and remove
+    $("#form-step1").on('click', '.dynamic-link', function () {
+        $(this).parent().fadeOut(300, function () {
+            $(this).empty();
+            return false;
+        });
+    });
+
+
+
+$(document).ready( function() { // Wait until document is fully parsed
+  $("#form-step1").on('submit', function(e){
+
+     e.preventDefault();
+
+  });
+});
+    
+    </script>
+    
+    
+    <script>
+
+    
+//set a counter for BUTTON2
+    var k = $('#form-step2 :input').length + 1;
+    //add input
+    $('a#add_btn2').click(function () {
+        $('<p><input type="text" name="items[]" class="inp" id="' + k + '" value="" /> <input type="number" name="items[]" class="inp" id="' + k + '" value="" min="0.00" max="10000.00" step="0.01"  />' +
+            '<a class="dynamic-link" href="#step2"><img src="img/remove.png" width="30px"></a></p>').fadeIn("slow").appendTo('#extender2');
+        k++;
+        return false;
+    });
+
+
+    //fadeout selected item and remove
+    $("#form-step2").on('click', '.dynamic-link', function () {
+        $(this).parent().fadeOut(300, function () {
+            $(this).empty();
+            return false;
+        });
+    });
+
+
+
+$(document).ready( function() { // Wait until document is fully parsed
+  $("#form-step2").on('submit', function(e){
+
+     e.preventDefault();
+
+  });
+});
+</script>
+
+
+</html>
