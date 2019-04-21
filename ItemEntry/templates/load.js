@@ -1,6 +1,6 @@
 //download mask effect
 $(document).ready(function() {
-	var timeOut = 500;
+	var timeOut = 1000;
 	var displayOut = function() {
 		setTimeout(function() {
 			$(".download-overlay").css({ display: "none" });
@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 		//ignore this below used to debug control time
 		setTimeout(function() {
-			$(".downloading").text("LOADING");
+			$(".downloading").text("");
 		}, 0);
 		setTimeout(function() {
 			$(".downloading").text("...");

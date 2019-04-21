@@ -18,9 +18,7 @@
     
 <body>
     
-    <div class="download-overlay">
-	<h1 class="downloading"></h1>
-</div>
+
 <div class="bigContainer">
 <header> 
     
@@ -46,12 +44,11 @@
     
     <div class="scrollingDiv">
     <form id="form-step1" class="form-vertical">
-        <legend>Items & Price</legend>
              
         <div id="extender2">
             <p style="display: block;">
             
-              <input type="text"  class="inp itemInput" id="1" value="" placeholder="Item Name">
+              <input type="text"  class="inp itemInput" id="1" value="" placeholder="Item">
                       <input type="number" min="0.00" max="10000.00" step="0.01" class="priceInput" placeholder="$"/>
 
                 
@@ -79,7 +76,6 @@
     <form method="post" action="" id="form-step2" class="form-vertical" >
 
   
-      <legend>Names</legend>
 
  
       <div id="extender">
@@ -107,28 +103,80 @@
 <div class="section"> 
 
        <h1>What is Mark paying for?</h1>
-     <div class="scrollingDiv">  
-   <div class="row">
-    <div class="col-xs-12">
-      <div class="btn-group btn-group-vertical" data-toggle="buttons">
-        <label class="btn active">
-          <input type="checkbox" id="checkbox-1" class="checkbox-custom" name="checkbox-1" type="checkbox"><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i> <span> Rice </span>
-        </label>
-        <label class="btn">
-          <input type="checkbox" id="checkbox-1" class="checkbox-custom" name="checkbox-1" type="checkbox"><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Chicken </span>
-        </label>
-        <label class="btn">
-          <input type="checkbox" id="checkbox-1" class="checkbox-custom" name="checkbox-1" type="checkbox"><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Ramen</span>
-        </label>
-      </div>
+     <div class="scrollingDivLeft">  
+ 
+           <ul>
+    <li>
+      <label class="checkbox"><input type="checkbox" name="" value="1">Jasmine Rice<span></span></label>
+    </li>
+    
+    <li>
+      <label class="checkbox"><input type="checkbox" name="" value="1">Chicken Thigh<span></span></label>
+    </li>
+    
+    <li>
+      <label class="checkbox"><input type="checkbox" name="" value="1">Eggs<span></span></label>
+    </li>
+    
+    <li>
+      <label class="checkbox"><input type="checkbox" name="" value="1">Spicy Spam<span></span></label>
+    </li>
+    
+    <li>
+      <label class="checkbox"><input type="checkbox" name="" value="1">Sriracha<span></span></label>
+    </li>
+  </ul>  
 
-
-    </div>
-  </div>
-    </div>
+    
+    </div> <!--Scrolling Div End-->
     
          <a href="#form-step2" class="NPbtn btn1">prev </a>  
        <a href="#form-step4" class="NPbtn btn2"> next </a>
+    
+    </div>
+    
+       <!-- section 4-->
+    
+   <div class="sectionSpacing" id="form-step4"> </div>
+    
+    
+<div class="section"> 
+
+       <h1>Here are everyone's totals!</h1>
+     <div class="scrollingDiv">  <center> 
+<table class="rwd-table">
+  <tr>
+    <th>Name</th>
+    <th>Total</th>
+
+  </tr>
+  <tr>
+    <td data-th="Name">Mark Nguyen</td>
+    <td data-th="Total">$7.50</td>
+
+  </tr>
+  <tr>
+    <td data-th="Name">Bia Toledo</td>
+    <td data-th="Total">$4.75</td>
+  </tr>
+  <tr>
+    <td data-th="Name">Atlas Ko</td>
+    <td data-th="Total">$8.75</td>
+  </tr>
+      <tr>
+    <td data-th="Name">Cheryl Woon</td>
+    <td data-th="Total">$6.25</td>
+  </tr>
+</table>
+
+<p>&larr; Drag window (in editor or full page view) to see the effect. &rarr;</p>
+    </center>
+    </div> 
+         
+         <!--Scrolling Div End-->
+    
+         <a href="#form-step2" class="NPbtn btn1">prev </a>  
+       <a href="#top" class="NPbtn btn2"> done! </a>
     
     </div>
     
@@ -143,7 +191,6 @@
 
 <!--<button id="btn1" class="btn"> Step back</button>
 <button id="btn2" class="btn"> Next Step</button> -->
-    </div>
     
     
     
@@ -170,7 +217,7 @@
 
     //add input
     $('a#add_btn').click(function () {
-        $('<p><input type="text" name="items[]" class="inp nameInput" id="' + j + '" value="" />' +
+        $('<p><input type="text" name="items[]" class="inp nameInput" placeholder="Name" id="' + j + '" value="" />' +
             '<a class="dynamic-link" href="#step2"><img src="img/remove.png" width="30px"></a></p>').fadeIn("slow").appendTo('#extender');
         j++;
         return false;
@@ -205,7 +252,7 @@ $(document).ready( function() { // Wait until document is fully parsed
     var k = $('#form-step2 :input').length + 1;
     //add input
     $('a#add_btn2').click(function () {
-        $('<p><input type="text" name="items[]" class="inp itemInput" id="' + k + '" value="" /> <input type="number" name="items[]" class="inp priceInput" id="' + k + '" value="" min="0.00" max="10000.00" step="0.01"  />' +
+        $('<p><input type="text" name="items[]" class="inp itemInput" placeholder="Item" id="' + k + '" value="" /> <input type="number" name="items[]" class="inp priceInput" placeholder="$" id="' + k + '" value="" min="0.00" max="10000.00" step="0.01"  />' +
             '<a class="dynamic-link" href="#step2"><img src="img/remove.png" width="30px"></a></p>').fadeIn("slow").appendTo('#extender2');
         k++;
         return false;
