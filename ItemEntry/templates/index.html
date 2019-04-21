@@ -5,26 +5,25 @@
 
     <style>
         html {
-          scroll-behavior: smooth;
+            scroll-behavior: smooth;
         }
-        body{
+
+        body {
             overflow: hidden;
         }
 
-        form{
+        form {
             position: relative;
             height: 100vh;
             overflow: scroll;
         }
 
     </style>
-	<title>test</title>
+    <title>test</title>
 
 
-
-<script src="https://code.jquery.com/jquery-1.9.1.js"  integrity="sha256-e9gNBsAcA0DBuRWbm0oZfbiCyhjLrI6bmqAl5o+ZjUA=" crossorigin="anonymous"></script>
-
-
+    <script src="https://code.jquery.com/jquery-1.9.1.js"
+            integrity="sha256-e9gNBsAcA0DBuRWbm0oZfbiCyhjLrI6bmqAl5o+ZjUA=" crossorigin="anonymous"></script>
 
 
 </head>
@@ -32,139 +31,110 @@
 <h1>Welcome</h1>
 
 
-<form id="form-step1" class="form-vertical">
-   <fieldset>
-      <legend>Items</legend>
-      <div id="extender2">
-          <p style="display: block;"><input type="text"  class="inp" id="1" value="">
-              <input type="number" min="0.00" max="10000.00" step="0.01" />
+<form id="form-step1" class="form-vertical"  method="post" action="" >
+    <fieldset>
+        <legend>Items</legend>
+        <div id="extender2">
+            <p style="display: block;"><input type="text" class="inp" id="1" value="">
+                <input type="number" min="0.00" max="10000.00" step="0.01"/>
 
 
-              <a class="dynamic-link" href="#step2">Remove</a></p>
-      </div>
+                <a class="dynamic-link" href="#step2">Remove</a></p>
+        </div>
 
-      <p><a id="add_btn2" href="#">Add</a></p>
-          <a href="#form-step2">next </a>
+        <p><a id="add_btn2" href="#">Add</a></p>
+        <a href="#form-step2">next </a>
 
     </fieldset>
 
 
 </form>
-
-
 
 
 <form method="post" action="" id="form-step2" class="form-vertical">
-   <fieldset>
-      <legend>Names</legend>
-      <div id="extender">
+    <fieldset>
+        <legend>Names</legend>
+        <div id="extender">
 
 
+            <p style="display: block;"><input type="text" class="inp" id="1" value=""><a class="dynamic-link"
+                                                                                         href="#step2">Remove</a></p>
 
-          <p style="display: block;"><input type="text"  class="inp" id="1" value=""><a class="dynamic-link" href="#step2">Remove</a></p>
 
+        </div>
 
-      </div>
+        <p><a id="add_btn" href="#">Add</a></p>
 
-      <p><a id="add_btn" href="#">Add</a></p>
+        <a href="#form-step2"  onclick="document.getElementById('form-step1').submit(); return false;" >next </a>
 
-            <a href="#form-step2">next </a>
-
-            <a href="#form-step1">prev </a>
+        <a href="#form-step1">prev </a>
 
     </fieldset>
 
 </form>
 
 
-
-
-
-
-
-
-
-<h2>Split</h2>
-            {% for name in names %}
-                <ul>
-                    <h2>{{name}}</h2>
-
-                        {% for item in items    %}
-                             <li>
-                            <label><input  type="checkbox" >{{item}} <br></label>
-                            </li>
-                        {% endfor %}
-
-                </ul>
-            {% endfor %}
-
-
-<button >Next</button>
+<button>Next</button>
 </body>
 
 
 <script>//set a counter
-    var i = $('#form-step1 :input').length + 1;
+var i = $('#form-step1 :input').length + 1;
 
-    //add input
-    $('a#add_btn').click(function () {
-        $('<p><input type="text" name="items[]" class="inp" id="' + i + '" value="" />' +
-            '<a class="dynamic-link" href="#step2">Remove</a></p>').fadeIn("slow").appendTo('#extender');
-        i++;
+//add input
+$('a#add_btn').click(function () {
+    $('<p><input type="text" name=it_"' + i + '"  class="inp" id=name_"' + i + '"/>' +
+        '<a class="dynamic-link" href="#step2">Remove</a></p>').fadeIn("slow").appendTo('#extender');
+    i++;
+    return false;
+});
+
+
+//fadeout selected item and remove
+$("#form-step1").on('click', '.dynamic-link', function () {
+    $(this).parent().fadeOut(300, function () {
+        $(this).empty();
         return false;
     });
+});
 
 
-    //fadeout selected item and remove
-    $("#form-step1").on('click', '.dynamic-link', function () {
-        $(this).parent().fadeOut(300, function () {
-            $(this).empty();
-            return false;
-        });
+$(document).ready(function () { // Wait until document is fully parsed
+    $("#form-step1").on('submit', function (e) {
+
+        e.preventDefault();
+
     });
-
-
-
-$(document).ready( function() { // Wait until document is fully parsed
-  $("#form-step1").on('submit', function(e){
-
-     e.preventDefault();
-
-  });
 });
 </script>
 
 
-
-
-
 <script>//set a counter
-    var i = $('#form-step2 :input').length + 1;
-    //add input
-    $('a#add_btn2').click(function () {
-        $('<p><input type="text" name="items[]" class="inp" id="' + i + '" value="" /> <input type="number" name="items[]" class="inp" id="' + i + '" value="" min="0.00" max="10000.00" step="0.01"  />' +
-            '<a class="dynamic-link" href="#step2">Remove</a></p>').fadeIn("slow").appendTo('#extender2');
-        i++;
+var ii = $('#form-step2 :input').length + 1 ;
+//add input
+$('a#add_btn2').click(function () {
+    $('<p><input type="text" name="' + ii + '" class="inp" id="' + ii + '" /> <input type="number" name=n"' + ii + '"  class="inp" id=n"' + ii + '" min="0.00" max="10000.00" step="0.01"  />' +
+        '<a class="dynamic-link" href="#step2">Remove</a></p>').fadeIn("slow").appendTo('#extender2');
+    ii++;
+    return false;
+});
+
+
+//fadeout selected item and remove
+$("#form-step2").on('click', '.dynamic-link', function () {
+    $(this).parent().fadeOut(300, function () {
+        $(this).empty();
         return false;
     });
+});
 
 
-    //fadeout selected item and remove
-    $("#form-step2").on('click', '.dynamic-link', function () {
-        $(this).parent().fadeOut(300, function () {
-            $(this).empty();
-            return false;
-        });
+$(document).ready(function () { // Wait until document is fully parsed
+    $("#form-step2").on('submit', function (e) {
+
+        e.preventDefault();
+
     });
-
-
-
-$(document).ready( function() { // Wait until document is fully parsed
-  $("#form-step2").on('submit', function(e){
-
-     e.preventDefault();
-
-  });
 });
 </script>
 

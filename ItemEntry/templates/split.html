@@ -1,0 +1,13 @@
+<h2>Split</h2>
+{% for name in names %}
+    <ul>
+        <h2>{{ name }}</h2>
+
+        {% for item in items %}
+            <li>
+                <label><input type="checkbox">{{ item }} <br></label>
+            </li>
+        {% endfor %}
+
+    </ul>
+{% endfor %}
