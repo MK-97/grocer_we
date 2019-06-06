@@ -1,7 +1,7 @@
 from django.shortcuts import render
+from django.http import HttpRequest
 
 
 def index(request):
 
-
-    return 0
+    return render(request, 'test.html') 

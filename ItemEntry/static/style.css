@@ -1,3 +1,4 @@
+
 html {
     scroll-behavior: smooth;
 }
@@ -9,7 +10,7 @@ html {
   height: 100%;
   margin: -24px;
   padding: 0;
-  background-image:url('img/loading.png');
+  background-image:url('loading.png');
     background-size: auto;
   z-index: 9999;
 }
@@ -25,7 +26,7 @@ html {
 
 body {
     overflow: hidden;
-    background-image: url('img/background.png');
+    background-image: url('background.png');
     font-family: 'Raleway', sans-serif;
     color: #222222;
 
@@ -36,12 +37,12 @@ form {
     position: relative;
     overflow: scroll;
     border: 0px;
-    
+
 
 }
 
-::-webkit-scrollbar { 
-    display: none; 
+::-webkit-scrollbar {
+    display: none;
 }
 .disable-scrollbars::-webkit-scrollbar {
     width: 0px;
@@ -73,7 +74,7 @@ form {
 }
 
 .bigContainer {
-    background: url('/img/receiptTear.png')repeat-x bottom;
+    background: url('receiptTear.png')repeat-x bottom;
     background-color: white;
     width: 700px;
     padding: 50px 75px 100px 75px;
@@ -125,8 +126,8 @@ header{
 
 .sectionSpacing{
     display:block;
- 
-  
+
+
 }
 
 h1 {
@@ -142,8 +143,8 @@ h1 {
     overflow-x: hidden;
 }
 
-.scrollingDiv::-webkit-scrollbar { 
-    display: ; 
+.scrollingDiv::-webkit-scrollbar {
+    display: ;
 }
 
 .scrollingDivLeft {
@@ -154,13 +155,13 @@ h1 {
     overflow-x: hidden;
 }
 
-.scrollingDivLeft::-webkit-scrollbar { 
-    display: ; 
+.scrollingDivLeft::-webkit-scrollbar {
+    display: ;
 }
 
 fieldset {
     border:0px;
-    
+
 }
 
 .anchor{
@@ -451,5 +452,3 @@ label.checkbox span::after {
 .rwd-table th, .rwd-table td:before {
   color: #dd5;
 }
-
-
