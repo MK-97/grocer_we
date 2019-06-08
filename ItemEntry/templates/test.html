@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
     <link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
 
@@ -44,10 +44,8 @@
         <div id="extender2">
             <p style="display: block;">
 
-              <input type="text"  class="inp itemInput" id="1" value="" placeholder="Item">
+              <input type="text"  class="itemInput" id="1" value="" placeholder="Item">
                       <input type="number" min="0.00" max="10000.00" step="0.01" class="priceInput" placeholder="$"/>
-
-
 
             <a class="dynamic-link" href="#step2"><img src="{% static "remove.png" %}" width="30px"></a></p>
         </div>
@@ -55,9 +53,45 @@
 
         <p><a id="add_btn2" href="#"><img src="{% static "add.png" %}" width="30px"></a></p>
         </div>
-        <a href="#form-step2" id="btn2" class="btn2 NPbtn"> Next </a>
+        <a href="#" value = "Next" id="btn2" class="btn2 NPbtn">Next</a>
         </form>
 
+<script>
+
+    $(document).ready(function (){
+      $("#btn2").click(function (){
+        var items = [];
+        var prices = [];
+        var dict =[];
+
+        $(".itemInput").each(function(index){
+          items.push($(this).val());
+        });
+        $(".priceInput").each(function(index){
+          prices.push($(this).val());
+        });
+        for(var i = 0; i < items.length; i++){
+          dict.push({
+            item: items[i],
+            price: prices[i]
+          });
+        };
+
+        var JSON_dict = JSON.stringify(dict);
+
+        console.log(JSON_dict);
+        var myObj = JSON.parse(JSON_dict);
+        console.log(myObj[0].item);
+
+        $.ajax({
+          url : '/get_data/',
+          type : 'GET',
+          data : {'data' : JSON_dict},
+        });
+      });
+    });
+
+</script>
 
 
   <!--section 2-->
@@ -248,7 +282,7 @@ $(document).ready( function() { // Wait until document is fully parsed
     var k = $('#form-step2 :input').length + 1;
     //add input
     $('a#add_btn2').click(function () {
-        $('<p><input type="text" name="items[]" class="inp itemInput" placeholder="Item" id="' + k + '" value="" /> <input type="number" name="items[]" class="inp priceInput" placeholder="$" id="' + k + '" value="" min="0.00" max="10000.00" step="0.01"  />' +
+        $('<p><input type="text" name="items[]" class="itemInput" placeholder="Item" id="' + k + '" value="" /> <input type="number" name="items[]" class="priceInput" placeholder="$" id="' + k + '" value="" min="0.00" max="10000.00" step="0.01"  />' +
             '<a class="dynamic-link" href="#step2"><img src=" {% static "remove.png" %}" width="30px"></a></p>').fadeIn("slow").appendTo('#extender2');
         k++;
         return false;
